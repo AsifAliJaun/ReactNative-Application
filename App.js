@@ -4,24 +4,36 @@ import { StyleSheet, View, FlatList, Button } from "react-native";
 
 import GoalItem from "./components/GoalItem";
 import GoalInput from "./components/GoalInput";
+import { Modal } from "react-native-web";
 
 export default function App() {
   const [courseGoals, setCourseGoal] = useState([]);
-
+  const [isAddMode, setIsAddMode] = useState(false);
   const removeGoalHandler = (goalId) => {
     setCourseGoal((currentGoals) => {
       return currentGoals.filter((goal) => goal.id !== goalId);
     });
   };
   const addGoalHandler = (goalTitle) => {
+    if (goalTitle.length <= 1) {
+      return;
+    }
     setCourseGoal((currentGoals) => [
       ...currentGoals,
       { id: Math.random().toString(), value: goalTitle },
     ]);
+    setIsAddMode(false);
+  };
+  const cancelGoalAdditionHandler = () => {
+    setIsAddMode(false);
   };
   return (
     <View style={styles.container}>
-      <GoalInput onAddGoal={addGoalHandler} />
+      <GoalInput
+        visible={isAddMode}
+        onAddGoal={addGoalHandler}
+        onCancel={cancelGoalAdditionHandler}
+      />
       <FlatList
         keyExtractor={(item, index) => item.id}
         data={courseGoals}
