@@ -1,20 +1,23 @@
 import react from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import GoalInput from "./GoalInput";
 const GoalItem = (props) => {
   return (
-    <View style={styles.listItems}>
-      <Text>{props.title}</Text>
-    </View>
+    <TouchableOpacity onPress={props.onDelete.bind(this, props.id)}>
+      <View style={styles.listItems}>
+        <Text>{props.title}</Text>
+      </View>
+    </TouchableOpacity>
   );
 };
 
 const styles = StyleSheet.create({
   listItems: {
     padding: 10,
+    marginVertical: 10,
     backgroundColor: "#ccc",
-    borderColor: "black",
+    borderLeftColor: "black",
     borderWidth: 1,
-    marginVertical: 5,
   },
 });
 export default GoalItem;
