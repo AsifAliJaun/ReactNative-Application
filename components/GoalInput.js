@@ -10,24 +10,24 @@ const GoalInput = (props) => {
   };
   const addGoalHandler = () => {
     props.onAddGoal(enteredGoal);
-    setEnteredGoal(" ");
+    setEnteredGoal("");
   };
 
   return (
-    <Modal visible={props.visible} animationType="slide">
-      <View style={styles.inputContainer}>
-        <TextInput
-          placeholder="Enter your Text Here"
-          onChangeText={goalInputHandler}
-          style={styles.input}
-          value={enteredGoal}
-        />
-        <View style={styles.buttonContainer}>
-          <Button title="ADD" color="green" onPress={addGoalHandler} />
-          <Button title="CANCEL" color="red" onPress={props.onCancel} />
-        </View>
+    //<Modal visible={props.visible} animationType="slide">
+    <View style={styles.inputContainer}>
+      <TextInput
+        placeholder="Enter your Text Here"
+        onChangeText={goalInputHandler}
+        style={styles.input}
+        value={enteredGoal}
+      />
+      <View style={styles.buttonContainer}>
+        <Button title="ADD" color="green" onPress={addGoalHandler} />
+        <Button title="CANCEL" color="red" onPress={props.onCancel} />
       </View>
-    </Modal>
+    </View>
+    //  </Modal>
   );
 };
 

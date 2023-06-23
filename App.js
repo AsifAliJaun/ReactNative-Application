@@ -15,7 +15,8 @@ export default function App() {
     });
   };
   const addGoalHandler = (goalTitle) => {
-    if (goalTitle.length <= 1) {
+    // console.log("goalTitle: ", goalTitle, " ; length:", goalTitle.length);
+    if (goalTitle.length === 0) {
       return;
     }
     setCourseGoal((currentGoals) => [
@@ -30,8 +31,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <GoalInput
-        visible={isAddMode}
-        onAddGoal={addGoalHandler}
+        /*visible={isAddMode}*/ onAddGoal={addGoalHandler}
         onCancel={cancelGoalAdditionHandler}
       />
       <FlatList
