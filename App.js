@@ -11,11 +11,13 @@ export default function App() {
   const [isAddMode, setIsAddMode] = useState(false);
   const removeGoalHandler = (goalId) => {
     setCourseGoal((currentGoals) => {
+      console.log(currentGoals);
       return currentGoals.filter((goal) => goal.id !== goalId);
     });
   };
   const addGoalHandler = (goalTitle) => {
-    // console.log("goalTitle: ", goalTitle, " ; length:", goalTitle.length);
+    console.log("goalTitle: ", goalTitle, " ; length:", goalTitle.length);
+
     if (goalTitle.length === 0) {
       return;
     }
@@ -25,13 +27,16 @@ export default function App() {
     ]);
     setIsAddMode(false);
   };
+
   const cancelGoalAdditionHandler = () => {
     setIsAddMode(false);
   };
+
   return (
     <View style={styles.container}>
       <GoalInput
-        /*visible={isAddMode}*/ onAddGoal={addGoalHandler}
+        visible={isAddMode}
+        onAddGoal={addGoalHandler}
         onCancel={cancelGoalAdditionHandler}
       />
       <FlatList

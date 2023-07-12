@@ -1,11 +1,9 @@
-import react from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
-import GoalInput from "./GoalInput";
-const GoalItem = (props) => {
+const GoalItem = (itemData) => {
   return (
-    <TouchableOpacity onPress={props.onDelete.bind(this, props.id)}>
+    <TouchableOpacity onPress={props.onDelete.bind(this, itemData.id)}>
       <View style={styles.listItems}>
-        <Text>{props.title}</Text>
+        <Text>{itemData.title}</Text>
       </View>
     </TouchableOpacity>
   );
